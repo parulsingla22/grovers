@@ -6,28 +6,6 @@
       0 => 'BeyondCode\\DumpServer\\DumpServerServiceProvider',
     ),
   ),
-  'bhavinjr/laravel-wishlist' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Bhavinjr\\Wishlist\\Providers\\WishlistServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Wishlist' => 'Bhavinjr\\Wishlist\\Facades\\Wishlist',
-    ),
-  ),
-  'darryldecode/cart' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Darryldecode\\Cart\\CartServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Cart' => 'Darryldecode\\Cart\\Facades\\CartFacade',
-    ),
-  ),
   'fideloper/proxy' => 
   array (
     'providers' => 
