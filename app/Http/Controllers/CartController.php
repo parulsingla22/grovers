@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Menu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Discount;
 
 class CartController extends Controller
 {
@@ -81,6 +82,7 @@ class CartController extends Controller
     public function cart(){
 		
 		$menu = Menu::where('active',1)->get();
+		$coupon=Discount::where('promocode',0)->get();
         $params = [
             'title' => 'Shopping Cart Checkout',
         ];
@@ -94,7 +96,7 @@ class CartController extends Controller
 				->where(['cart.userid'=>$userId])
 				->get();
 		//echo $cart;
-        return view('cart')->with(compact('menu','cart','cartcount1'));
+        return view('cart')->with(compact('menu','cart','cartcount1','coupon'));
     }
 
     public function clear(){

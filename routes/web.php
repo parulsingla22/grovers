@@ -68,7 +68,7 @@ Route::resource('discount','DiscountController');
 Route::delete('discount/destroy/{id}', 'DiscountController@destroy'); 
 Route::get('discount/{id}/edit','DiscountController@edit');
 Route::post('discount/update/{id}','DiscountController@update');
-Route::get('coupon','DiscountController@coupon');
+Route::get('coupon','DiscountController@coupon')->name('coupon');
 
 //Cart Routes
 

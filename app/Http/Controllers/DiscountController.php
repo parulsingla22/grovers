@@ -27,8 +27,8 @@ class DiscountController extends Controller
     }
 	public function coupon(Request $request)
 	{
-		$coupon=$request->code;
-		Discount::where('promocode')->get();
+		
+		$coupon=Discount::where('promocode',$request->code)->get();
 		$menu = Menu::where('active',1)->get();
         $params = [
             'title' => 'Shopping Cart Checkout',
