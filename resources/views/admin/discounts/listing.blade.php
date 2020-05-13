@@ -90,16 +90,19 @@
                                         <td>{{ $discount->id }}</td>
                                         <td>{{ $discount->promocode }}</td>
 										<td>{{ $discount->discount }}</td>
-                                        <td>{{ $product->active}}</td>
+                                        <td>{{ $discount->active}}</td>
                                         <td>
-											<form action='discounts/{{$discount->id}}/edit' method="get">
+											<form action='discount/{{$discount->id}}/edit' method="get">
 												<meta name="csrf-token" content="{{ csrf_token() }}">
 												<button type="submit" class="updateRecord" data-id="{{ $discount->id }}" >Update</button>
 											</form>
                                         </td>
                                         <td>
+											<form action='discount/destroy/{{$discount->id}}/' method="get">
+											
 											<meta name="csrf-token" content="{{ csrf_token() }}">
                                             <button class="deleteRecord" data-id="{{ $discount->id }}" >Delete</button>
+											</form>
                                         </td>
                                     </tr>
 									@endforeach

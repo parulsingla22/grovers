@@ -79,27 +79,43 @@
     			</div>
     		</div>
     		<div class="row justify-content-end">
+			 @if(isset($coupon) && $coupon->count() > 0)
+				 <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+    				<div class="cart-total mb-3">
+    					<h3>Coupon Code</h3>
+    					<p>Enter your coupon code if you have one</p>
+									@csrf
+								<div class="form-group">
+								<label for="">Coupon code</label>
+								<input type="text" name="code" id="code" class="form-control text-left px-3" placeholder="" value="{{$coupon->promocode}}">
+							  </div>
+						
+							<p>
+							<button class="btn btn-primary py-3 px-4">Promocode Applied</button>
+							</p>
+						</form>
+					</div>
+				</div>
+    			
+			@else
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
     					<h3>Coupon Code</h3>
     					<p>Enter your coupon code if you have one</p>
-						<form class="info" method="POST" action="{{route('coupon')}}" >
-								@csrf
-							<div class="form-group">
-							<label for="">Coupon code</label>
-							<input type="text" name="code" id="code" class="form-control text-left px-3" placeholder="" value="">
-						  </div>
-					
-						<p>
-						<a href="" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
-						<a href="#" onclick="document.getElementById('form1{{$product->id}}').submit();" class="buy-now d-flex justify-content-center align-items-center mx-1"><span><i class="ion-ios-cart"></i></span></a>
-							
-					
-    				</div>
-				</form>
-		
-				
-    			</div>
+						<form class="info" method="get" action="{{route('coupon')}}" >
+									@csrf
+								<div class="form-group">
+								<label for="">Coupon code</label>
+								<input type="text" name="code" id="code" class="form-control text-left px-3" placeholder="" value="">
+							  </div>
+						
+							<p>
+							<button class="btn btn-primary py-3 px-4">Apply Coupon</button>
+							</p>
+						</form>
+					</div>
+				</div>
+			@endif
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
     					<h3>Estimate shipping and tax</h3>
@@ -138,7 +154,7 @@
     					</p-->
 						<p class="d-flex">
     						<span>Discount</span>
-							 @if($coupon->count() > 0)
+							 @if(isset($coupon) && $coupon->count() > 0)
     						<span>Rs.{{$discount=$coupon->discount}}</span>
 							@else
 							<span>Rs.{{$discount=0}}</span>
@@ -147,7 +163,7 @@
     					<hr>
     					<p class="d-flex total-price">
     						<span>Total</span>
-    						<span>Rs.{{$total=($subtotal+$delivery)-$discount}}</span>
+    						<span>Rs.{{$total=($subtotal+$delivery-$discount)}}</span>
     					</p>
     				</div>
 					<div class="row">

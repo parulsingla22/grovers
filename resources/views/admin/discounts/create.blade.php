@@ -6,6 +6,10 @@
 		{
 			padding:10px 190px;
 		}
+		body
+		{
+			color:black;
+		}
 	</style>
     <!--end of page level css-->
 @endsection
@@ -90,7 +94,7 @@
 			var form = $('#promoform')[0]; // You need to use standard javascript object here
 			var formData = new FormData(form);
 			$.ajax({
-					url: "{{ route('discounts.store')}}",
+					url: "{{ route('discount.store')}}",
 					type: "Post",
 					data: formData,
 					contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)

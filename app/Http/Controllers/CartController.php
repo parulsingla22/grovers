@@ -82,7 +82,7 @@ class CartController extends Controller
     public function cart(){
 		
 		$menu = Menu::where('active',1)->get();
-		$coupon=Discount::where('promocode',0)->get();
+		//$coupon=Discount::where('promocode',0)->find();
         $params = [
             'title' => 'Shopping Cart Checkout',
         ];
@@ -96,7 +96,7 @@ class CartController extends Controller
 				->where(['cart.userid'=>$userId])
 				->get();
 		//echo $cart;
-        return view('cart')->with(compact('menu','cart','cartcount1','coupon'));
+        return view('cart')->with(compact('menu','cart','cartcount1'));
     }
 
     public function clear(){

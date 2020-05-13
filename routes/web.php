@@ -63,7 +63,7 @@ Route::post('quality/update/{id}','QualityController@update');
 Route::resource('subscribers','SubscribersController');
 Route::delete('subscribers/destroy/{id}', 'SubscribersController@destroy'); 
 
-//Discount Roiscount
+//Discount 
 Route::resource('discount','DiscountController');
 Route::delete('discount/destroy/{id}', 'DiscountController@destroy'); 
 Route::get('discount/{id}/edit','DiscountController@edit');

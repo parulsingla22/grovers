@@ -153,6 +153,26 @@
 						<li class="menu-link">
                             <a href="#">
                                 <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
+                                <span class="title">Discount</span>
+                                <span class="fa arrow"></span>
+                            </a>
+							<ul class="sub-menu">
+								 <li class="menu-link1">
+									<a href="{{ route('discount.create')}}">
+										<i class="fa fa-angle-double-right"></i>Add Coupon
+									</a>
+								</li>
+								</li class="menu-link1">
+								<li>
+									<a href="{{route('discount.index')}}">
+										<i class="fa fa-angle-double-right"></i> Coupon List
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-link">
+                            <a href="#">
+                                <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
                                 <span class="title">Features</span>
                                 <span class="fa arrow"></span>
                             </a>

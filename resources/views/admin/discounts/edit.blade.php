@@ -31,7 +31,7 @@
 					</div>
 					<div class="form-group">
 						<label>Discount</label>
-						<input class="form-control" name="discount" id="discount" placeholder="Enter Discount Price" value="{{$test->discount}}">
+						<input class="form-control" name="amount" id="amount" placeholder="Enter Discount Price" value="{{$test->discount}}">
 					</div>
 					<div class="form-group">
 						<label>Active</label>

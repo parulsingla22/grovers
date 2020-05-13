@@ -24,11 +24,22 @@ class DiscountController extends Controller
     public function index()
     {
         //
+		$data = Discount::Paginate(5);
+		return view ( 'admin.discounts.listing' )->withData ( $data );
+    
     }
+	public function cartcount()
+	{
+		$userId = auth()->user()->id;
+		$quantcount=Cart::where([
+				['userid', '=', $userId]
+			])->sum('quantity');
+		return $quantcount; 
+	}
 	public function coupon(Request $request)
 	{
 		
-		$coupon=Discount::where('promocode',$request->code)->get();
+		$coupon=Discount::where('promocode',$request->code)->first();
 		$menu = Menu::where('active',1)->get();
         $params = [
             'title' => 'Shopping Cart Checkout',
@@ -42,7 +53,7 @@ class DiscountController extends Controller
 				->select('cart.*','products.*')
 				->where(['cart.userid'=>$userId])
 				->get();
-		//echo $cart;
+		//echo $coupon;
         return view('cart')->with(compact('menu','cart','cartcount1','coupon'));
    
 		
@@ -55,7 +66,7 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.discounts.create');
     }
 
     /**
@@ -67,6 +78,19 @@ class DiscountController extends Controller
     public function store(Request $request)
     {
         //
+		 $request->validate([
+			'title' => 'required',
+			'amount'=>'required',
+			'pactive'=>'required'	
+		]);
+		$result=Discount::create(['promocode' => $request->title,'discount'=>$request->amount,'active'=>$request->pactive]);
+		if ($result) {
+			return response()->json([
+				'status'=>'success']);
+		} else {
+			return response()->json([
+				'status' => 'error']);
+		}
     }
 
     /**
@@ -86,9 +110,12 @@ class DiscountController extends Controller
      * @param  \App\Discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function edit(Discount $discount)
+    public function edit($discount)
     {
         //
+		$test = Discount::find($discount);
+        return view('admin.discounts.edit')->with(compact('test'));
+ 
     }
 
     /**
@@ -98,9 +125,24 @@ class DiscountController extends Controller
      * @param  \App\Discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Discount $discount)
+    public function update(Request $request,$discount)
     {
         //
+		$request->validate([
+			'title' => 'required',
+			'amount'=>'required',
+			'pactive'=>'required'
+		]);
+		
+		$test = Discount::find($discount);
+		$test->promocode = request('title');
+		$test->discount = request('amount');
+		$test->active = request('pactive');
+		
+		$test->save();
+		
+		return view('admin.discounts.create');
+    
     }
 
     /**
@@ -112,5 +154,11 @@ class DiscountController extends Controller
     public function destroy(Discount $discount)
     {
         //
+		
+        $test=Discount::find($discount);
+		$test->delete($id);
+		return response()->json([
+			'success' => 'Record deleted successfully!'
+		]);
     }
 }
