@@ -1,0 +1,74 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Cart;
+use App\Products;
+use Illuminate\Http\Request;
+use App\Menu;
+use Illuminate\Support\Facades\Auth;
+
+class CartController extends Controller
+{
+    public function __construct()
+	{
+		$this->middleware('auth');
+	}
+	public function add(Request $request){
+        $product = Products::find($request->id);
+		if($product->saleprice!="no")
+		{
+			$price=$product->saleprice;
+		}
+		else
+		{
+			$price=$product->price;
+		}
+		$userId = auth()->user()->id;
+		Cart::session($userId);
+        Cart::session($userId)->add($product->id, $product->name, $price,$product->productimg, 1, array());
+		Cart::store($userId);
+        return back()->with('success',"$product->name has successfully beed added to the shopping cart!");;
+    }
+	public function remove(Request $request)
+	{
+		$userId = auth()->user()->id;
+	   Cart::session($userId);
+	  Cart::session($userId)->remove($request->id);
+		return back();
+  
+	}
+	public function update(Request $request)
+	{
+		$userId = auth()->user()->id;
+        Cart::session($userId);
+		Cart::session($userId)->update($request->id,[
+		 'quantity' => [
+            'relative' => false,
+            'value' => $request->quantity 
+        ],
+		   ]);
+		   Cart::store($userId);
+ 
+	}
+
+    public function cart(){
+		
+		$menu = Menu::where('active',1)->get();
+        $params = [
+            'title' => 'Shopping Cart Checkout',
+        ];
+		
+		$userId = auth()->user()->id;
+		Cart::restore($userId);
+        return view('cart')->with(compact('menu','params'));
+    }
+
+    public function clear(){
+        $userId = auth()->user()->id;
+        Cart::session($userId);
+		Cart::session($userId)->clear();
+
+        return back()->with('success',"The shopping cart has successfully beed added to the shopping cart!");;
+    }
+}

@@ -82,22 +82,16 @@
     				<div class="cart-total mb-3">
     					<h3>Coupon Code</h3>
     					<p>Enter your coupon code if you have one</p>
-						<form class="info" method="POST" action="<?php echo e(route('coupon')); ?>" >
-								<?php echo csrf_field(); ?>
-							<div class="form-group">
+						<form action="#" class="info">
+						  <div class="form-group">
 							<label for="">Coupon code</label>
-							<input type="text" name="code" id="code" class="form-control text-left px-3" placeholder="" value="">
+							<input type="text" class="form-control text-left px-3" placeholder="">
 						  </div>
 					
-						<p>
-						<a href="" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
-						<a href="#" onclick="document.getElementById('form1<?php echo e($product->id); ?>').submit();" class="buy-now d-flex justify-content-center align-items-center mx-1"><span><i class="ion-ios-cart"></i></span></a>
-							
+    				<p><a href="" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
 					
     				</div>
 				</form>
-		
-				
     			</div>
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
@@ -131,17 +125,9 @@
     						<span>Delivery</span>
     						<span>Rs.<?php echo e($delivery=10); ?></span>
     					</p>
-    					<!--p class="d-flex">
+    					<p class="d-flex">
     						<span>Discount</span>
     						<span>Rs.<?php echo e($discount=5); ?></span>
-    					</p-->
-						<p class="d-flex">
-    						<span>Discount</span>
-							 <?php if($coupon->count() > 0): ?>
-    						<span>Rs.<?php echo e($discount=$coupon->discount); ?></span>
-							<?php else: ?>
-							<span>Rs.<?php echo e($discount=0); ?></span>
-							<?php endif; ?>
     					</p>
     					<hr>
     					<p class="d-flex total-price">

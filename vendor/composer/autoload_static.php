@@ -124,7 +124,6 @@ class ComposerStaticInitb05b4430b6457e77bb47183ef91977b3
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
             'DeepCopy\\' => 9,
-            'Darryldecode\\' => 13,
         ),
         'C' => 
         array (
@@ -133,7 +132,6 @@ class ComposerStaticInitb05b4430b6457e77bb47183ef91977b3
         ),
         'B' => 
         array (
-            'Bhavinjr\\Wishlist\\' => 18,
             'BeyondCode\\DumpServer\\' => 22,
         ),
         'A' => 
@@ -353,10 +351,6 @@ class ComposerStaticInitb05b4430b6457e77bb47183ef91977b3
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Darryldecode\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode',
-        ),
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
@@ -364,10 +358,6 @@ class ComposerStaticInitb05b4430b6457e77bb47183ef91977b3
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
-        ),
-        'Bhavinjr\\Wishlist\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/bhavinjr/laravel-wishlist/src',
         ),
         'BeyondCode\\DumpServer\\' => 
         array (
@@ -397,13 +387,9 @@ class ComposerStaticInitb05b4430b6457e77bb47183ef91977b3
     );
 
     public static $classMap = array (
-        'App\\Blog' => __DIR__ . '/../..' . '/app/Blog.php',
-        'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
         'App\\Categories' => __DIR__ . '/../..' . '/app/Categories.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
-        'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
         'App\\Deals' => __DIR__ . '/../..' . '/app/Deals.php',
-        'App\\Discount' => __DIR__ . '/../..' . '/app/Discount.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Features' => __DIR__ . '/../..' . '/app/Features.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -411,14 +397,10 @@ class ComposerStaticInitb05b4430b6457e77bb47183ef91977b3
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
-        'App\\Http\\Controllers\\BlogController' => __DIR__ . '/../..' . '/app/Http/Controllers/BlogController.php',
-        'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
         'App\\Http\\Controllers\\CategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoriesController.php',
-        'App\\Http\\Controllers\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\DealsController' => __DIR__ . '/../..' . '/app/Http/Controllers/DealsController.php',
-        'App\\Http\\Controllers\\DiscountController' => __DIR__ . '/../..' . '/app/Http/Controllers/DiscountController.php',
         'App\\Http\\Controllers\\FeaturesController' => __DIR__ . '/../..' . '/app/Http/Controllers/FeaturesController.php',
         'App\\Http\\Controllers\\GroversController' => __DIR__ . '/../..' . '/app/Http/Controllers/GroversController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
@@ -426,7 +408,6 @@ class ComposerStaticInitb05b4430b6457e77bb47183ef91977b3
         'App\\Http\\Controllers\\ProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductsController.php',
         'App\\Http\\Controllers\\QualityController' => __DIR__ . '/../..' . '/app/Http/Controllers/QualityController.php',
         'App\\Http\\Controllers\\SubscribersController' => __DIR__ . '/../..' . '/app/Http/Controllers/SubscribersController.php',
-        'App\\Http\\Controllers\\WishlistController' => __DIR__ . '/../..' . '/app/Http/Controllers/WishlistController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -445,16 +426,10 @@ class ComposerStaticInitb05b4430b6457e77bb47183ef91977b3
         'App\\Quality' => __DIR__ . '/../..' . '/app/Quality.php',
         'App\\Subscribers' => __DIR__ . '/../..' . '/app/Subscribers.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
-        'App\\Wishlist' => __DIR__ . '/../..' . '/app/Wishlist.php',
-        'App\\shipping' => __DIR__ . '/../..' . '/app/shipping.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
         'BeyondCode\\DumpServer\\RequestContextProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/RequestContextProvider.php',
-        'Bhavinjr\\Wishlist\\Facades\\Wishlist' => __DIR__ . '/..' . '/bhavinjr/laravel-wishlist/src/Facades/Wishlist.php',
-        'Bhavinjr\\Wishlist\\Models\\Wishlist' => __DIR__ . '/..' . '/bhavinjr/laravel-wishlist/src/Models/Wishlist.php',
-        'Bhavinjr\\Wishlist\\Providers\\WishlistServiceProvider' => __DIR__ . '/..' . '/bhavinjr/laravel-wishlist/src/Providers/WishlistServiceProvider.php',
-        'Bhavinjr\\Wishlist\\Wishlist' => __DIR__ . '/..' . '/bhavinjr/laravel-wishlist/src/Wishlist.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
         'Carbon\\CarbonInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterface.php',
@@ -501,23 +476,6 @@ class ComposerStaticInitb05b4430b6457e77bb47183ef91977b3
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
-        'Darryldecode\\Cart\\Cart' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Cart.php',
-        'Darryldecode\\Cart\\CartCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartCollection.php',
-        'Darryldecode\\Cart\\CartCondition' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartCondition.php',
-        'Darryldecode\\Cart\\CartConditionCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartConditionCollection.php',
-        'Darryldecode\\Cart\\CartServiceProvider' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartServiceProvider.php',
-        'Darryldecode\\Cart\\Exceptions\\CartAlreadyStoredException' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Exceptions/CartAlreadyStoredException.php',
-        'Darryldecode\\Cart\\Exceptions\\InvalidConditionException' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Exceptions/InvalidConditionException.php',
-        'Darryldecode\\Cart\\Exceptions\\InvalidItemException' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Exceptions/InvalidItemException.php',
-        'Darryldecode\\Cart\\Exceptions\\UnknownModelException' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Exceptions/UnknownModelException.php',
-        'Darryldecode\\Cart\\Facades\\CartFacade' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Facades/CartFacade.php',
-        'Darryldecode\\Cart\\Helpers\\Helpers' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Helpers/Helpers.php',
-        'Darryldecode\\Cart\\ItemAttributeCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/ItemAttributeCollection.php',
-        'Darryldecode\\Cart\\ItemCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/ItemCollection.php',
-        'Darryldecode\\Cart\\Validators\\CartConditionValidator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartConditionValidator.php',
-        'Darryldecode\\Cart\\Validators\\CartItemValidator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartItemValidator.php',
-        'Darryldecode\\Cart\\Validators\\Validator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/Validator.php',
-        'Darryldecode\\Shoppingcart\\ShoppingcartServiceProvider' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/ShoppingCartServiceProvider.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
