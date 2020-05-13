@@ -443,6 +443,7 @@ class ComposerStaticInitb05b4430b6457e77bb47183ef91977b3
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Quality' => __DIR__ . '/../..' . '/app/Quality.php',
+        'App\\Shipping' => __DIR__ . '/../..' . '/app/Shipping.php',
         'App\\Subscribers' => __DIR__ . '/../..' . '/app/Subscribers.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\Wishlist' => __DIR__ . '/../..' . '/app/Wishlist.php',

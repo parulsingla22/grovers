@@ -13,7 +13,7 @@ class CreateBlogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog, function (Blueprint $table) {
+        Schema::create('blog', function (Blueprint $table) {
             $table->Increments('id');
 			$table->string('title');
 			$table->string('category');
@@ -21,7 +21,7 @@ class CreateBlogsTable extends Migration
 			$table->string('tags');
 			$table->date('publishedOn');
 			$table->string('photo');
-			$table->boolean('active')->default('false');
+			$table->boolean('active')->default(false);
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateBlogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('blog');
     }
 }

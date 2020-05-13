@@ -52,6 +52,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Quality' => $baseDir . '/app/Quality.php',
+    'App\\Shipping' => $baseDir . '/app/Shipping.php',
     'App\\Subscribers' => $baseDir . '/app/Subscribers.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\Wishlist' => $baseDir . '/app/Wishlist.php',
