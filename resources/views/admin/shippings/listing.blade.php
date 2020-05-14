@@ -60,12 +60,22 @@
                                         <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
                                             colspan="1" aria-label="
                                                  Member Name
-                                            : activate to sort column ascending">Promocode
+                                            : activate to sort column ascending">State
+                                        </th>
+										<th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
+                                            colspan="1" aria-label="
+                                                 Member Name
+                                            : activate to sort column ascending">Country
+                                        </th>
+										<th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
+                                            colspan="1" aria-label="
+                                                 Member Name
+                                            : activate to sort column ascending">Zipcode
                                         </th>
 										<th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
                                             colspan="1" aria-label="
                                                  Member Photo
-                                            : activate to sort column ascending">Discount
+                                            : activate to sort column ascending">Delivery
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
                                             colspan="1" aria-label="
@@ -85,23 +95,25 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-									@foreach ($data as $discount)
+									@foreach ($data as $ship)
                                     <tr role="row">
-                                        <td>{{ $discount->id }}</td>
-                                        <td>{{ $discount->promocode }}</td>
-										<td>{{ $discount->discount }}</td>
-                                        <td>{{ $discount->active}}</td>
+                                        <td>{{ $ship->id }}</td>
+                                        <td>{{ $ship->state }}</td>
+										<td>{{ $ship->country }}</td>
+										<td>{{ $ship->zipcode }}</td>
+										<td>{{ $ship->delivery }}</td>
+                                        <td>{{ $ship->active}}</td>
                                         <td>
-											<form action='discount/{{$discount->id}}/edit' method="get">
+											<form action='shipping/{{$ship->id}}/edit' method="get">
 												<meta name="csrf-token" content="{{ csrf_token() }}">
-												<button type="submit" class="updateRecord" data-id="{{ $discount->id }}" >Update</button>
+												<button type="submit" class="updateRecord" data-id="{{ $ship->id }}" >Update</button>
 											</form>
                                         </td>
                                         <td>
-											<form action='discount/destroy/{{$discount->id}}/' method="get">
+											<form action='shipping/destroy/{{$ship->id}}/' method="get">
 											
 											<meta name="csrf-token" content="{{ csrf_token() }}">
-                                            <button class="deleteRecord" data-id="{{ $discount->id }}" >Delete</button>
+                                            <button class="deleteRecord" data-id="{{ $ship->id }}" >Delete</button>
 											</form>
                                         </td>
                                     </tr>
@@ -188,7 +200,7 @@
 				$('#okbutton').click(function(){
 					$.ajax(
 					{
-						url: "discounts/destroy/"+id,
+						url: "shipping/destroy/"+id,
 						type:"delete",
 						data: {
 							"id": id,
