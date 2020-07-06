@@ -5,10 +5,15 @@ use Illuminate\Support\Facades\DB;
 use App\Products;
 use App\Menu;
 use App\Categories;
+use App\Cart;
+use App\Traits\CartCount;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
+	use CartCount;
     public function __construct()
 	{
 		$this->middleware('auth');
@@ -23,9 +28,19 @@ class ProductsController extends Controller
 		$users = DB::table('products')
             ->join('categories', 'products.categoryid', '=', 'categories.id')
             ->select('products.*', 'categories.name as category')
-            ->paginate(2);
-        return view('admin.products.listing', ['data' => $users]);
-    }
+            ->paginate(4);
+		if (Auth::check())
+		{	
+			if( auth()->user()->type != 'ADMIN')
+			{
+				return redirect('/');
+			}	
+		else
+		{
+			return view('admin.products.listing', ['data' => $users]);
+		}
+		}
+	}
 
     /**
      * Show the form for creating a new resource.
@@ -34,11 +49,19 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        
-		$category=Categories::where('active',1)->get();
-        return view('admin.products.create')->with(compact('category'));
-    }
-
+        if (Auth::check())
+		{	
+			if( auth()->user()->type != 'ADMIN')
+			{
+				return redirect('/');
+			}	
+			else
+			{
+				$category=Categories::where('active',1)->get();
+				return view('admin.products.create')->with(compact('category'));
+			}
+		}
+	}
     /**
      * Store a newly created resource in storage.
      *
@@ -47,7 +70,7 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+			$request->validate([
 			'name' => 'required',
 			'price'=>'required',
 			'pactive'=>'required',
@@ -86,10 +109,19 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        
-		$category=Categories::where('active',1)->get();
-        $test = Products::find($id);
-        return view('admin.products.edit')->with(compact('test','category'));
+        if (Auth::check())
+		{	
+			if( auth()->user()->type != 'ADMIN')
+			{
+				return redirect('/');
+			}	
+			else
+			{
+				$category=Categories::where('active',1)->get();
+				$test = Products::find($id);
+				return view('admin.products.edit')->with(compact('test','category'));
+			}
+		}
     }
 
     /**
@@ -142,12 +174,22 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        $test=Products::find($id);
-		unlink(public_path("images/products/{$test->productimg}"));
-		$test->delete($id);
-		return response()->json([
-			'success' => 'Record deleted successfully!'
-		]);
+		if (Auth::check())
+		{	
+			if( auth()->user()->type != 'ADMIN')
+			{
+				return redirect('/');
+			}	
+			else
+			{
+				$test=Products::find($id);
+				unlink(public_path("images/products/{$test->productimg}"));
+				$test->delete($id);
+				return response()->json([
+					'success' => 'Record deleted successfully!'
+				]);
+			}
+		}
     }
 	public function shop()
 	{
@@ -159,6 +201,17 @@ class ProductsController extends Controller
 		$userId = auth()->user()->id;
 		//$products=Products::where('active',1)->get();
 		$category=Categories::where('active',1)->get();
-		return view('shop')->with(compact('menu','users','category','products'));
+		$cartcount1=$this->getCartcount();
+		return view('shop')->with(compact('menu','users','category','products','cartcount1'));
+	}
+	public function detail(Request $request)
+	{
+		$menu = Menu::where('active',1)->get();
+		$userId = auth()->user()->id;
+		$products=Products::where('id',$request->pid)->get();
+		$category=Categories::where('active',1)->get();
+		$cartcount1=$this->getCartcount();
+		return view('product-single')->with(compact('menu','users','category','products','cartcount1'));
+	
 	}
 }

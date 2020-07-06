@@ -7,9 +7,13 @@ use App\Menu;
 use App\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Traits\CartCount;
 
+use Illuminate\Support\Facades\Auth;
 class BlogController extends Controller
 {
+	
+	use CartCount;
 	public function __construct()
 	{
 		$this->middleware('auth');
@@ -31,9 +35,19 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $category=Categories::where('active',1)->get();
-        return view('admin.blog.create')->with(compact('category'));
-
+		if (Auth::check())
+		{	
+			if( auth()->user()->type != 'ADMIN')
+			{
+				return redirect('/');
+			}	
+			else
+			{
+				$category=Categories::where('active',1)->get();
+				return view('admin.blog.create')->with(compact('category'));
+			}
+		}
+		
     }
 
     /**
@@ -57,6 +71,7 @@ class BlogController extends Controller
         $request->blogphoto->move(public_path('images/blog/'), $fileName);
 		$filepath='images/blog/'.$fileName;
 		$result=Blog::create(['photo'=>$fileName,'title' =>$request->title,'body'=>$request->editordata,'category'=>$request->category,'tags'=>$request->selecttag,'active' => $request->activeon,'publishedOn'=>$request->datepicker]);
+		//echo $result;
 		if ($result) {
 			return response()->json([
 				'status'=>'success']);
@@ -76,24 +91,7 @@ class BlogController extends Controller
     {
         //
     }
-	public function display()
-	{
-		$category=DB::table('categories')
-       ->join('blog', 'blog.category', '=','categories.id')
-       ->select(DB::raw('count(blog.category) as countcat,categories.name'))
-	   ->groupBy('categories.name')
-	   ->get();
-     
-		$menu = Menu::where('active',1)->get();
-		$blogs = Blog::where('active',1)->get();
-				$userId = auth()->user()->id;
-		return view('blog')->with(compact('menu','users','blogs','category'));
-	}
-	public function singleblog($id)
-	{
-		$singleblog=Blog::where('id',$id)->get();
-		return view('blog-single')->with(compact('singleblog'));
-	}
+	
     /**
      * Show the form for editing the specified resource.
      *

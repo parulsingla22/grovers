@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController extends CartController
 {
     /**
      * Create a new controller instance.
@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+		$count=$this->cartcount();
+		//echo $count;
+        return view('home')->with(compact('count'));
     }
 }

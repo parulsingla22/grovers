@@ -1,7 +1,4 @@
 <?php $__env->startSection('pagelevel'); ?>
-	<!--page level css -->
-
-    <!--end of page level css-->
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 	    <section id="home-section" class="hero">
@@ -90,14 +87,21 @@
 								</div>
 	    					</div>
 	    					<div class="bottom-area d-flex px-3">
-	    						<div class="m-auto d-flex">
-	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-	    								<span><i class="ion-ios-menu"></i></span>
-	    							</a>
+	    						<div>
+								<form method="POST" id="form3<?php echo e($product->id); ?>" action="<?php echo e(route('products.single')); ?>" >
+										<?php echo csrf_field(); ?>
+										<input name="pid" type="hidden" value="<?php echo e($product->id); ?>">
+										<a href="#" onclick="document.getElementById('form3<?php echo e($product->id); ?>').submit();" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+											<span>
+												<i class="ion-ios-menu"></i>
+											</span>
+										</a>
+									</form>
 									<form method="POST" id="form1<?php echo e($product->id); ?>" action="<?php echo e(route('cart.add')); ?>" >
 										<?php echo csrf_field(); ?>
 										<input name="id" type="hidden" value="<?php echo e($product->id); ?>">
-										<a href="#" onclick="document.getElementById('form1<?php echo e($product->id); ?>').submit();" class="buy-now d-flex justify-content-center align-items-center mx-1"><span><i class="ion-ios-cart"></i></span></a>
+										<a href="#" onclick="document.getElementById('form1<?php echo e($product->id); ?>').submit();" class="buy-now d-flex justify-content-center align-items-center mx-1">
+										<span><i class="ion-ios-cart"></i></span></a>
 									</form>
 									<form method="POST" id="form2<?php echo e($product->id); ?>" action="<?php echo e(route('wishlist.store')); ?>" >
 										<?php echo csrf_field(); ?>
@@ -222,11 +226,7 @@
           </div>
         </div>
       </div>
-    </section>
-
-
-
-	
+    </section>	
 <?php $__env->stopSection(); ?>
             
 

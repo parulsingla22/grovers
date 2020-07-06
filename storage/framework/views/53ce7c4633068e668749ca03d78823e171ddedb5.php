@@ -29,9 +29,15 @@
 								<?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $wish): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 								<?php if($wish->user_id==auth()->user()->id): ?>
 								<tr class="text-center">
-									<td class="product-remove"><a href="<?php echo e(route('wishlist.destroy', ['id' => $wish->product_id])); ?>"><span class="ion-ios-close"></span></a></td>
+									<td class="product-remove">
+										<a href="<?php echo e(route('wishlist.destroy', ['id' => $wish->product_id])); ?>">
+											<span class="ion-ios-close"></span>
+										</a>
+									</td>
 									
-									<td class="image-prod"><img src="<?php echo e(URL::asset('images/products/')); ?>/<?php echo e($wish->productimg); ?>" alt="This is an image" width="50px" height="50px"/></td>
+									<td class="image-prod">
+										<img src="<?php echo e(URL::asset('images/products/')); ?>/<?php echo e($wish->productimg); ?>" alt="This is an image" width="50px" height="50px"/>
+									</td>
 									
 									<td class="product-name">
 										<h3><?php echo e($wish->name); ?></h3>

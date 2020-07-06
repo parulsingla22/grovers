@@ -1,8 +1,5 @@
 @extends('layouts.app')
 @section('pagelevel')
-	<!--page level css -->
-
-    <!--end of page level css-->
 @endsection
 @section('content')
 	    <section id="home-section" class="hero">
@@ -91,14 +88,21 @@
 								</div>
 	    					</div>
 	    					<div class="bottom-area d-flex px-3">
-	    						<div class="m-auto d-flex">
-	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-	    								<span><i class="ion-ios-menu"></i></span>
-	    							</a>
+	    						<div>
+								<form method="POST" id="form3{{$product->id}}" action="{{route('products.single')}}" >
+										@csrf
+										<input name="pid" type="hidden" value="{{$product->id}}">
+										<a href="#" onclick="document.getElementById('form3{{$product->id}}').submit();" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+											<span>
+												<i class="ion-ios-menu"></i>
+											</span>
+										</a>
+									</form>
 									<form method="POST" id="form1{{$product->id}}" action="{{route('cart.add')}}" >
 										@csrf
 										<input name="id" type="hidden" value="{{$product->id}}">
-										<a href="#" onclick="document.getElementById('form1{{$product->id}}').submit();" class="buy-now d-flex justify-content-center align-items-center mx-1"><span><i class="ion-ios-cart"></i></span></a>
+										<a href="#" onclick="document.getElementById('form1{{$product->id}}').submit();" class="buy-now d-flex justify-content-center align-items-center mx-1">
+										<span><i class="ion-ios-cart"></i></span></a>
 									</form>
 									<form method="POST" id="form2{{$product->id}}" action="{{route('wishlist.store')}}" >
 										@csrf
@@ -223,11 +227,7 @@
           </div>
         </div>
       </div>
-    </section>
-
-
-
-	
+    </section>	
 @endsection
             
 

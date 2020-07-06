@@ -14,7 +14,10 @@ class CreateOrderItemsTable extends Migration
     public function up()
     {
         Schema::create('order_items', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('itemId');
+			$table->string('orderId');
+			$table->string('pid');
+			$table->integer('quantity');
             $table->timestamps();
         });
     }

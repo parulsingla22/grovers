@@ -117,27 +117,6 @@
 			<?php endif; ?>
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
-    					<h3>Estimate shipping and tax</h3>
-    					<p>Enter your destination to get a shipping estimate</p>
-  						<form action="#" class="info">
-	              <div class="form-group">
-	              	<label for="">Country</label>
-	                <input type="text" class="form-control text-left px-3" placeholder="">
-	              </div>
-	              <div class="form-group">
-	              	<label for="country">State/Province</label>
-	                <input type="text" class="form-control text-left px-3" placeholder="">
-	              </div>
-	              <div class="form-group">
-	              	<label for="country">Zip/Postal Code</label>
-	                <input type="text" class="form-control text-left px-3" placeholder="">
-	              </div>
-	            </form>
-    				</div>
-    				<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
-    			</div>
-    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-    				<div class="cart-total mb-3">
     					<h3>Cart Totals</h3>
     					<p class="d-flex">
     						<span>Subtotal</span>
@@ -145,7 +124,7 @@
     					</p>
     					<p class="d-flex">
     						<span>Delivery</span>
-    						<span>Rs.<?php echo e($delivery=10); ?></span>
+    						<span id="shipping"><?php echo e($delivery=20); ?></span>
     					</p>
     					<!--p class="d-flex">
     						<span>Discount</span>
@@ -167,7 +146,16 @@
     				</div>
 					<div class="row">
 						<div class="col-md-12">	
-							<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+						<form action="<?php echo e(route('checkout.carttotal')); ?>" method="get">
+							<?php echo csrf_field(); ?>
+							<input type="hidden" name="subtotal"  id="subtotal" value="<?php echo e($subtotal); ?>">
+							<input type="hidden" name="delivery"  id="delivery" value="<?php echo e($delivery); ?>">
+							<input type="hidden" name="discount"  id="discount" value="<?php echo e($discount); ?>">
+							
+							<input type="hidden" name="total"  id="total" value="<?php echo e($total); ?>">
+							
+								<p><button class="btn btn-primary py-3 px-4">Proceed to Checkout</button></p>
+						</form>
 						</div>
 						<div class="col-md-12">
 							<p>
@@ -262,5 +250,6 @@
 		    
 		});
 	</script>
+	
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\laravel\grovers\resources\views/cart.blade.php ENDPATH**/ ?>

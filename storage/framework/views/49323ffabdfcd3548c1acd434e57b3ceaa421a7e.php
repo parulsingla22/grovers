@@ -30,7 +30,7 @@
     			<div class="col-md-6 col-lg-3 ftco-animate filter <?php echo e($product->category); ?>">
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="<?php echo e(URL::asset('images/products/')); ?>/<?php echo e($product->productimg); ?>" alt="Colorlib Template">
-    						<span class="status">30%</span>
+    						<!--span class="status">30%</span-->
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
@@ -38,21 +38,31 @@
     						<div class="d-flex">
     							<div class="pricing">
 									<?php if($product->saleprice=="no"): ?>
-									<p class="price"><span class="price-sale">$<?php echo e($product->price); ?></span></p>
+									<p class="price"><span class="price-sale">Rs.<?php echo e($product->price); ?></span></p>
 									<?php else: ?>
-		    						<p class="price"><span class="mr-2 price-dc">$<?php echo e($product->price); ?></span><span class="price-sale">$<?php echo e($product->saleprice); ?></span></p>
+		    						<p class="price"><span class="mr-2 price-dc">Rs.<?php echo e($product->price); ?></span><span class="price-sale">$<?php echo e($product->saleprice); ?></span></p>
 									<?php endif; ?>
 								</div>
 	    					</div>
 							<div class="bottom-area d-flex px-3">
 	    						<div class="m-auto d-flex">
-	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-	    								<span><i class="ion-ios-menu"></i></span>
-	    							</a>
+									<form method="POST" id="form1<?php echo e($product->id); ?>" action="<?php echo e(route('products.single')); ?>" >
+										<?php echo csrf_field(); ?>
+										<input name="pid" type="hidden" value="<?php echo e($product->id); ?>">
+										<a href="#" onclick="document.getElementById('form1<?php echo e($product->id); ?>').submit();" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+											<span>
+												<i class="ion-ios-menu"></i>
+											</span>
+										</a>
+									</form>
 									<form method="POST" id="form1<?php echo e($product->id); ?>" action="<?php echo e(route('cart.add')); ?>" >
 										<?php echo csrf_field(); ?>
 										<input name="id" type="hidden" value="<?php echo e($product->id); ?>">
-										<a href="#" onclick="document.getElementById('form1<?php echo e($product->id); ?>').submit();" class="buy-now d-flex justify-content-center align-items-center mx-1"><span><i class="ion-ios-cart"></i></span></a>
+										<a href="#" onclick="document.getElementById('form1<?php echo e($product->id); ?>').submit();" class="buy-now d-flex justify-content-center align-items-center mx-1">
+											<span>
+												<i class="ion-ios-cart"></i>
+											</span>
+										</a>
 									</form>
 									<form method="POST" id="form2<?php echo e($product->id); ?>" action="<?php echo e(route('wishlist.store')); ?>" >
 										<?php echo csrf_field(); ?>

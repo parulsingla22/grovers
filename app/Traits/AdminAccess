@@ -1,0 +1,23 @@
+<?php
+ 
+namespace App\Traits;
+use Illuminate\Http\Request;
+use App\Cart;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+
+trait AdminAccess {
+
+    public function getAdminaccess() {
+        // 
+		$userType = auth()->user()->type;
+		if($userType=='ADMIN')
+		{}
+		else
+		{
+			return route('/');
+		}
+    }
+}
+?

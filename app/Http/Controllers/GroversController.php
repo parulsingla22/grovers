@@ -13,7 +13,7 @@ use App\Subscribers;
 use Cart;
 use Illuminate\Support\Facades\Auth;
 
-class GroversController extends Controller
+class GroversController extends CartController
 {
     /**
      * Display a listing of the resource.
@@ -27,9 +27,10 @@ class GroversController extends Controller
 		$features=Features::where('active',1)->get();
 		$category=Categories::where('active',1)->get();
 		$products=Products::where('active',1)->get();
+		$cartcount1=$this->cartcount();
 		
 		
-		return view ( 'welcome' )->with(compact('menu','category','products','features'));
+		return view ( 'welcome' )->with(compact('menu','category','products','features','cartcount1'));
     }
 
     /**
@@ -82,10 +83,7 @@ class GroversController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    
 
     /**
      * Remove the specified resource from storage.

@@ -30,9 +30,15 @@
 								@foreach ($users as $wish)
 								@if($wish->user_id==auth()->user()->id)
 								<tr class="text-center">
-									<td class="product-remove"><a href="{{route('wishlist.destroy', ['id' => $wish->product_id])}}"><span class="ion-ios-close"></span></a></td>
+									<td class="product-remove">
+										<a href="{{route('wishlist.destroy', ['id' => $wish->product_id])}}">
+											<span class="ion-ios-close"></span>
+										</a>
+									</td>
 									
-									<td class="image-prod"><img src="{{URL::asset('images/products/')}}/{{$wish->productimg}}" alt="This is an image" width="50px" height="50px"/></td>
+									<td class="image-prod">
+										<img src="{{URL::asset('images/products/')}}/{{$wish->productimg}}" alt="This is an image" width="50px" height="50px"/>
+									</td>
 									
 									<td class="product-name">
 										<h3>{{ $wish->name }}</h3>

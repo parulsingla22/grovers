@@ -46,13 +46,15 @@ class CartController extends Controller
 				$quant=$quant+1;
 				$test->quantity=$quant;
 				$test->save();
-				return back();
+				//return back();
+				return redirect()->route('cart');
 		}
 		else
 		{
 			$quant=1;
 			Cart::create(['userid'=>$userId,'productid'=>$request->id,'quantity'=>$quant]);
-			return back();
+			//return back();
+			return redirect()->route('cart');
 		}
 	}
 	public function remove(Request $request)

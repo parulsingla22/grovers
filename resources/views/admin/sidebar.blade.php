@@ -190,45 +190,45 @@
 								</li>
 							</ul>
 						</li>
-						<li class="menu-link">
+						<!--li class="menu-link">
                             <a href="#">
                                 <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
                                 <span class="title">Deals</span>
                                 <span class="fa arrow"></span>
                             </a>
-							<ul class="sub-menu">
+							<!--ul class="sub-menu">
 								 <li class="menu-link1">
 									<a href="{{ route('deals.create')}}">
 										<i class="fa fa-angle-double-right"></i>Add Deal
 									</a>
 								</li>
 								</li class="menu-link1">
-								<li>
+								<!--li>
 									<a href="{{route('deals.index')}}">
 										<i class="fa fa-angle-double-right"></i> Deals List
 									</a>
-								</li>
-							</ul>
-						</li>
+								</li-->
+							</ul-->
+						</li-->
 						
 						<li class="menu-link">
                             <a href="#">
                                 <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
-                                <span class="title">Quality</span>
+                                <span class="title">Blog</span>
                                 <span class="fa arrow"></span>
                             </a>
 							<ul class="sub-menu">
 								 <li class="menu-link1">
-									<a href="{{ route('quality.create')}}">
-										<i class="fa fa-angle-double-right"></i>Add quality
+									<a href="{{ route('blog.create')}}">
+										<i class="fa fa-angle-double-right"></i>Add Blog
 									</a>
 								</li>
 								</li class="menu-link1">
-								<li>
-									<a href="{{route('quality.index')}}">
-										<i class="fa fa-angle-double-right"></i>Quality List
+								<!--li>
+									<a href="{{route('blog.index')}}">
+										<i class="fa fa-angle-double-right"></i>Blog List
 									</a>
-								</li>
+								</li-->
 							</ul>
 						</li>
 						
@@ -243,6 +243,26 @@
 								<li>
 									<a href="{{route('subscribers.index')}}">
 										<i class="fa fa-angle-double-right"></i> Subscribers List
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+                                <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
+                                <span class="title">Orders</span>
+                                <span class="fa arrow"></span>
+                            </a>
+							<ul class="sub-menu">
+								</li class="menu-link1">
+								<li>
+									<a href="{{route('orders.display')}}">
+										<i class="fa fa-angle-double-right"></i> Orders List
+									</a>
+								</li>
+								<li>
+									<a href="{{route('orderitems1')}}">
+										<i class="fa fa-angle-double-right"></i> Order Details List
 									</a>
 								</li>
 							</ul>

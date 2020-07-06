@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MenuController extends Controller
 {
@@ -12,12 +13,25 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+	 public function __construct()
+	{
+		$this->middleware('auth');
+	}
     public function index()
     {
-        
-        $data = Menu::Paginate(5);
-		return view ( 'admin.menu.listing' )->withData ( $data );
-    }
+        if (Auth::check())
+		{	
+			if( auth()->user()->type != 'ADMIN')
+			{
+				return redirect('/');
+			}	
+			else
+			{
+				$data = Menu::Paginate(5);
+				return view ( 'admin.menu.listing' )->withData ( $data );
+			}
+		}
+	}
 
     /**
      * Show the form for creating a new resource.
@@ -26,9 +40,18 @@ class MenuController extends Controller
      */
     public function create()
     {
-		
-		$menu=Menu::where('active',1)->get();
-        return view('admin.menu.create')->with(compact('menu'));
+		if (Auth::check())
+		{	
+			if( auth()->user()->type != 'ADMIN')
+			{
+				return redirect('/');
+			}	
+			else
+			{
+				$menu=Menu::where('active',1)->get();
+				return view('admin.menu.create')->with(compact('menu'));
+			}
+		}
     }
 
     /**
@@ -109,13 +132,20 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        Menu:find($id)->delete($id);
-		return response()->json([
-			'success' => 'Record deleted successfully!'
-		]);
+		if (Auth::check())
+		{	
+			if( auth()->user()->type != 'ADMIN')
+			{
+				return redirect('/');
+			}	
+			else
+			{
+				Menu:find($id)->delete($id);
+				return response()->json([
+					'success' => 'Record deleted successfully!'
+				]);
+			}
+		}
     }
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+	
 }

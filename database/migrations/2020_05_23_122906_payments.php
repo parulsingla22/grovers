@@ -4,20 +4,26 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrdersTable extends Migration
+class Payments extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+   public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('payments', function (Blueprint $table) {
+            $table->Increments('PaymentId');
+			$table->string('orderId');
+			$table->string('amount');
+			$table->string('discount');
+			$table->string('delivery');
+			$table->string('total');
             $table->timestamps();
         });
     }
+	
 
     /**
      * Reverse the migrations.
@@ -26,6 +32,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('payments');
     }
 }

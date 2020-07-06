@@ -29,13 +29,15 @@ class LoginController extends Controller
     //protected $redirectTo = '/admin';
 	protected function redirectTo( ) {
     if (Auth::check() && Auth::user()->type == 'USER') {
-        return('/');
+      // echo "Hi";
+	    return('grovers');
     }
     elseif (Auth::check() && Auth::user()->type == 'VENDOR') {
         return('/vendor');
     }
     else {
-        return('/admin');
+		
+        return('admin');
     }
 }
     /**

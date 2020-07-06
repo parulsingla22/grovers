@@ -106,9 +106,9 @@ trait AuthenticatesUsers
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
-
-        return $this->authenticated($request, $this->guard()->user())
-                ?: redirect()->intended($this->redirectPath());
+		//echo $this->redirectPath();
+       return $this->authenticated($request, $this->guard()->user())
+               ?: redirect()->route($this->redirectPath());
     }
 
     /**
@@ -182,5 +182,6 @@ trait AuthenticatesUsers
     protected function guard()
     {
         return Auth::guard();
+	
     }
 }

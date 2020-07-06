@@ -118,27 +118,6 @@
 			@endif
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
-    					<h3>Estimate shipping and tax</h3>
-    					<p>Enter your destination to get a shipping estimate</p>
-  						<form action="#" class="info">
-	              <div class="form-group">
-	              	<label for="">Country</label>
-	                <input type="text" class="form-control text-left px-3" placeholder="">
-	              </div>
-	              <div class="form-group">
-	              	<label for="country">State/Province</label>
-	                <input type="text" class="form-control text-left px-3" placeholder="">
-	              </div>
-	              <div class="form-group">
-	              	<label for="country">Zip/Postal Code</label>
-	                <input type="text" class="form-control text-left px-3" placeholder="">
-	              </div>
-	            </form>
-    				</div>
-    				<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
-    			</div>
-    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-    				<div class="cart-total mb-3">
     					<h3>Cart Totals</h3>
     					<p class="d-flex">
     						<span>Subtotal</span>
@@ -146,7 +125,7 @@
     					</p>
     					<p class="d-flex">
     						<span>Delivery</span>
-    						<span>Rs.{{$delivery=10}}</span>
+    						<span id="shipping">{{$delivery=20}}</span>
     					</p>
     					<!--p class="d-flex">
     						<span>Discount</span>
@@ -168,7 +147,16 @@
     				</div>
 					<div class="row">
 						<div class="col-md-12">	
-							<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+						<form action="{{route('checkout.carttotal')}}" method="get">
+							@csrf
+							<input type="hidden" name="subtotal"  id="subtotal" value="{{$subtotal}}">
+							<input type="hidden" name="delivery"  id="delivery" value="{{$delivery}}">
+							<input type="hidden" name="discount"  id="discount" value="{{$discount}}">
+							
+							<input type="hidden" name="total"  id="total" value="{{$total}}">
+							
+								<p><button class="btn btn-primary py-3 px-4">Proceed to Checkout</button></p>
+						</form>
 						</div>
 						<div class="col-md-12">
 							<p>
@@ -263,4 +251,5 @@
 		    
 		});
 	</script>
+	
 @endsection

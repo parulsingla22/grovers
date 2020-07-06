@@ -93,11 +93,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Blog image</label>
-                                        
-                                            <input type="file" name="blogphoto" id="blogphoto" class="form-control" placeholder="Upload image">
-						<img id="blah" src="#" alt="your image" width="200px" height="200px"/>
-				
-						            </div>
+                                        <input type="file" name="blogphoto" id="blogphoto" class="form-control" placeholder="Upload image">
+										<img id="blah" src="#" alt="your image" width="200px" height="200px"/>
+									</div>
                                     <div class="form-group">
                                         <button class="btn btn-success" id="butsave">Save and post</button>
                                         <button class="btn btn-danger">Discard</button>
